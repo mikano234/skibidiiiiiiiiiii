@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        background: linear-gradient(to bottom, #070320, #2b36b5);
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    header {
+        background-color: #070320;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 60px;
+        position: sticky;
+        top: 0;
+        z-index: 999;
+    }
+
+    header h1 {
+        color: white;
+    }
+
+    nav ul {
+        display: flex;
+        list-style: none;
+        gap: 40px;
+        align-items: center;
+    }
+
+    nav ul li a {
+        font-weight: bold;
+        color: white;
+        transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+        color: #E87D0E;
+    }
+
+    .btn {
+        background: #ff0000;
+        padding: 10px 20px;
+        border-radius: 50px;
+        font-weight: bold;
+        color: white;
+        transition: background 0.3s;
+    }
+
+    .btn:hover {
+        background: #ff3030;
+    }
+
+    main {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .map {
+        text-align: center;
+        padding: 50px 20px;
+    }
+
+    .map h2 {
+        color: white;
+        font-size: 28px;
+        margin-bottom: 10px;
+    }
+
+    .map>p {
+        color: #ccc;
+        margin-bottom: 40px;
+    }
+
+    .map iframe {
+        display: block;
+        margin: 0 auto;
+        border: 2px solid white;
+        border-radius: 10px;
+        max-width: 1200px;
+        width: 100%;
+        height: 500px;
+    }
+
+    .contact {
+        text-align: center;
+        background-color: white;
+        padding: 50px 20px;
+    }
+
+    .contact h2 {
+        color: #000;
+        font-size: 28px;
+        margin-bottom: 10px;
+    }
+
+    .contact>p {
+        color: #666;
+        margin-bottom: 40px;
+    }
+
+    .contact form {
+        max-width: 800px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        text-align: left;
+    }
+
+    .form-row {
+        display: flex;
+        gap: 20px;
+    }
+
+    .form-group {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    label {
+        font-size: 14px;
+        margin-bottom: 8px;
+        font-weight: 600;
+        color: #000;
+    }
+
+    input,
+    textarea {
+        background: #000;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        padding: 12px 15px;
+        font-size: 14px;
+        font-family: Arial, sans-serif;
+    }
+
+    textarea {
+        resize: vertical;
+        min-height: 150px;
+    }
+
+    form button {
+        background: #ff0000;
+        color: white;
+        border: none;
+        border-radius: 50px;
+        padding: 12px 30px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        align-self: flex-end;
+        transition: background 0.3s;
+    }
+
+    form button:hover {
+        background: #ff3030;
+    }
+
+    .contact-info {
+        background: linear-gradient(to bottom, #070320, #2b36b5);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 40px;
+        padding: 50px 60px;
+        color: white;
+        flex-wrap: wrap;
+    }
+
+    .contact-info.top-info {
+        margin-top: -20px;
+        padding-top: 20px;
+        padding-bottom: 30px;
+    }
+
+    .contact-info.bottom-info {
+        margin-top: 0;
+        padding-top: 30px;
+        padding-bottom: 50px;
+    }
+
+    .info-box {
+        text-align: center;
+        flex: 0 1 auto;
+    }
+
+    .info-box h3 {
+        margin: 0 0 15px 0;
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    .info-box p {
+        margin: 0;
+        color: #ccc;
+        font-size: 14px;
+    }
+
+    .social-links {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+    }
+
+    .social-icon {
+        width: 35px;
+        height: 35px;
+        background: #E87D0E;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 14px;
+        transition: all 0.3s;
+    }
+
+    .social-icon:hover {
+        background: #ff0000;
+        transform: scale(1.1);
+    }
+
+    .contact-info .divider {
+        width: 1px;
+        height: 60px;
+        background: rgba(255, 255, 255, 0.2);
+    }
+
+    .subscribe {
+        max-width: 1000px;
+        margin: 80px auto;
+        padding: 20px;
+    }
+
+    .subscribe h2 {
+        color: white;
+        font-size: 22px;
+        margin-bottom: 10px;
+    }
+
+    .subscribe p {
+        color: #ccc;
+        line-height: 1.6;
+        margin-bottom: 30px;
+    }
+
+    .subscribe-box {
+        background: #d6c5bb;
+        border-radius: 10px;
+        padding: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 40px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .subscribe-text {
+        flex: 1;
+    }
+
+    .subscribe-text h3 {
+        margin: 0;
+        font-size: 20px;
+        color: #000;
+    }
+
+    .subscribe-text p {
+        color: #555;
+        font-size: 14px;
+        margin: 10px 0 0 0;
+    }
+
+    .subscribe-form {
+        display: flex;
+        gap: 8px;
+        flex-shrink: 0;
+    }
+
+    .subscribe-form input {
+        padding: 12px 15px;
+        border: none;
+        background: #000;
+        color: white;
+        border-radius: 6px;
+        width: 220px;
+    }
+
+    .subscribe-form button {
+        padding: 12px 20px;
+        background: #e60023;
+        border: none;
+        color: white;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background 0.3s;
+    }
+
+    .subscribe-form button:hover {
+        background: #b8001b;
+    }
+
+    .fb-comments {
+        display: none;
+    }
+
+    footer {
+        background-color: white;
+        padding: 40px 60px;
+        margin-top: 50px;
+    }
+
+    .footer-container {
+        display: flex;
+        justify-content: space-between;
+        max-width: 75%;
+        margin-bottom: 30px;
+    }
+
+    .f-column h2,
+    .f-column h4 {
+        margin-bottom: 15px;
+    }
+
+    .f-column ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .f-column ul li {
+        margin-bottom: 8px;
+    }
+
+    .footer-bottom {
+        text-align: center;
+        border-top: 1px solid #ddd;
+        padding-top: 30px;
+        color: #666;
+    }
+
+    @media (max-width: 768px) {
+        .contact-info {
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-info .divider {
+            width: 60px;
+            height: 1px;
+        }
+
+        .map iframe {
+            height: 300px;
+        }
+
+        .subscribe-box {
+            flex-direction: column;
+        }
+
+        .subscribe-form {
+            width: 100%;
+        }
+
+        .subscribe-form input {
+            flex: 1;
+        }
+
+        .form-row {
+            flex-direction: column;
+        }
+    }
+</style>
+
+<body>
+    <script type="text/javascript">
+        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+        (function () {
+            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/68e78e40f54263195404127b/1j7487bl5';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
+    </script>
+    <div class="container">
+        <header>
+            <h1>Logo</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="service.html">Portfolio</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <a href="contact.html" class="btn">Contact us</a>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <section class="map">
+                <h2>Lorem Ipsum is simply dummy text of the printing and.</h2>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d32048.75480465827!2d108.0722140204458!3d12.710247873056085!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3171f7b6e379b675%3A0x72662967145555c0!2zVHLGsOG7nW5nIENhbyDEkeG6s25nIEZQVCBQb2x5dGVjaG5pYw!5e0!3m2!1svi!2s!4v1760748027881!5m2!1svi!2s"
+                    allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </section>
+
+            <section class="contact-info top-info">
+                <div class="info-box">
+                    <h3>Follow us</h3>
+                    <div class="social-links">
+                        <a href="https://facebook.com" target="_blank" class="social-icon">f</a>
+                        <a href="https://instagram.com" target="_blank" class="social-icon">📷</a>
+                        <a href="https://twitter.com" target="_blank" class="social-icon">𝕏</a>
+                        <a href="https://linkedin.com" target="_blank" class="social-icon">in</a>
+                    </div>
+                </div>
+                <div class="divider"></div>
+                <div class="info-box">
+                    <h3>☎️ Phone</h3>
+                    <p>+94 4444 5555 6</p>
+                </div>
+                <div class="divider"></div>
+                <div class="info-box">
+                    <h3>📍 Location</h3>
+                    <p>but also the leap into electronic typesetting</p>
+                </div>
+            </section>
+
+            <section class="contact">
+                <h2>Say hello</h2>
+                <p>Lorem ipsum is simply dummy text of the printing.</p>
+                <form action="https://api.web3forms.com/submit" method="POST">
+                    <input type="hidden" name="access_key" value="4cd9f4e0-048b-4ae8-b37d-c81f085db8cc">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="fname">First Name</label>
+                            <input type="text" id="fname" name="fname" placeholder="Enter your first name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lname">Last Name</label>
+                            <input type="text" id="lname" name="lname" placeholder="Enter your last name" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" placeholder="Write your message..." required></textarea>
+                    </div>
+                    <button type="submit">Get in touch</button>
+                </form>
+            </section>
+
+
+
+            <section class="subscribe">
+                <h2>Lorem Ipsum</h2>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                <div class="subscribe-box">
+                    <div class="subscribe-text">
+                        <h3>Stay in the loop</h3>
+                        <p>Subscribe to receive the latest news and updates about TDA.<br>We promise not to spam you!
+                        </p>
+                    </div>
+                    <form class="subscribe-form">
+                        <input type="email" placeholder="Enter email address" required>
+                        <button type="submit">Continue</button>
+                    </form>
+                </div>
+            </section>
+
+            <div id="fb-root"></div>
+            <script async defer crossorigin="anonymous"
+                src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v24.0&appId=APP_ID"></script>
+            <div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/comments#configurator"
+                data-width="1000" data-numposts="5"></div>
+        </main>
+
+        <footer>
+            <div class="footer-container">
+                <div class="f-column">
+                    <h2>LOGO</h2>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                </div>
+                <div class="f-column">
+                    <h4>About</h4>
+                    <ul>
+                        <li>Zeux</li>
+                        <li>Portfolio</li>
+                        <li>Careers</li>
+                        <li>Contact us</li>
+                    </ul>
+                </div>
+                <div class="f-column">
+                    <h4>Contact us</h4>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                    <p>+908 89097 890</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Copyright © 2022 prodesigner All rights Reserved</p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

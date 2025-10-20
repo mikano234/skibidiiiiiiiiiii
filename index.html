@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment</title>
+</head>
+<style>
+    body {
+        background-color: #070320;
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    header {
+        background-color: #070320;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 60px;
+        position: sticky;
+        top: 0;
+        z-index: 999;
+    }
+
+    header h1 {
+        color: white;
+    }
+
+    nav ul {
+        display: flex;
+        list-style: none;
+        gap: 40px;
+        align-items: center;
+    }
+
+    nav ul li a {
+        font-weight: bold;
+        transition: color 0.3s;
+        color: white;
+    }
+
+    nav ul li a:hover {
+        color: #E87D0E;
+    }
+
+    .btn {
+        background: #ff0000;
+        padding: 10px 20px;
+        border-radius: 50px;
+        font-weight: bold;
+        transition: background 0.3s;
+        color: white;
+    }
+
+    .btn:hover {
+        background: #ff3030;
+    }
+
+    main {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-left: 100px;
+        margin-right: 100px;
+        position: relative;
+    }
+
+    .introduction {
+        padding: 80px;
+        width: 400px
+    }
+
+    .introduction h5 {
+        color: #E87D0E;
+    }
+
+    .introduction h1 {
+        color: white;
+        font-size: 40px;
+    }
+
+    .introduction p {
+        color: white;
+    }
+
+    .introduction button {
+        background: red;
+        border-radius: 50px;
+        text-decoration: none;
+        color: white;
+        padding: 20px;
+    }
+
+    .trending {
+        text-align: left;
+    }
+
+    .trending h2 {
+        margin-bottom: 20px;
+        color: white;
+    }
+
+    .trending button {
+        float: right;
+        width: 100px;
+        max-height: 50px;
+        margin-top: 50px;
+        margin-right: 50px;
+    }
+
+    .trending .text {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .trending button {
+        background: #2d2d5a;
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 30px;
+        cursor: pointer;
+    }
+
+    .game-list {
+        display: flex;
+        justify-content: center;
+        gap: 100px;
+    }
+
+    .game-list p {
+        color: white;
+        text-align: center;
+        font-size: 30px;
+    }
+
+    .game-list img {
+        width: 300px;
+        border-radius: 10px;
+    }
+
+    .text h2 {
+        color: white;
+        text-align: center;
+        padding: 50px 80px;
+    }
+
+    .text2 {
+        color: white;
+        display: flex;
+        flex-direction: column;
+        padding: 20px 80px;
+    }
+
+    .text2 p {
+        width: 400px;
+    }
+
+    .text2 img {
+        width: 1500px;
+        border-radius: 10px;
+        margin-top: 20px;
+        align-self: center;
+    }
+
+    .featured {
+        background-image: url(asset/Black-Ops-Cold-War.jpg);
+        height: 1000px;
+        background-size: cover;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        flex-direction: column;
+        color: white;
+        margin: 0;
+    }
+
+    .projects {
+        text-align: center;
+        color: white;
+        padding: 50px 80px;
+    }
+
+    .project-pics {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        flex-wrap: wrap;
+        margin-top: 20px;
+    }
+
+    .project-pics img {
+        border-radius: 16px;
+        overflow: hidden;
+        transition: 0.3s ease;
+        position: relative;
+    }
+
+    .projects button {
+        background: #2d2d5a;
+        border-radius: 50px;
+        text-decoration: none;
+        color: white;
+        padding: 20px;
+        margin-top: 30px;
+    }
+
+    .subscribe {
+        width: 1000px;
+        margin: 80px auto;
+        padding: 20px;
+    }
+
+    .subscribe h2 {
+        color: white;
+        font-size: 22px;
+        margin-bottom: 10px;
+    }
+
+    .subscribe p {
+        color: #ccc;
+        line-height: 1.6;
+    }
+
+    .subscribe-box {
+        background: white;
+        color: #000;
+        border-radius: 10px;
+        padding: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 40px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .subscribe-text {
+        flex: 1;
+    }
+
+    .subscribe-text h3 {
+        margin: 0;
+        font-size: 20px;
+        color: #000;
+    }
+
+    .subscribe-text p {
+        color: #555;
+        font-size: 14px;
+    }
+
+    .subscribe-form {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .subscribe-form input {
+        padding: 12px 15px;
+        border: none;
+        outline: none;
+        background: #000;
+        color: #fff;
+        border-radius: 6px;
+        width: 220px;
+    }
+
+    .subscribe-form button {
+        padding: 12px 20px;
+        background: #e60023;
+        border: none;
+        color: #fff;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background 0.3s ease;
+    }
+
+    .subscribe-form button:hover {
+        background: #b8001b;
+    }
+
+    footer {
+        background-color: white;
+        padding: 40px 60px;
+    }
+
+    .footer-container {
+        display: flex;
+        justify-content: space-between;
+        max-width: 75%;
+    }
+
+    .f-column ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .footer-bottom {
+        text-align: center;
+        margin-top: 50px;
+    }
+</style>
+
+<body>
+    <script type="text/javascript">
+        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+        (function () {
+            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/68e78e40f54263195404127b/1j7487bl5';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
+    </script>
+    <div class="container">
+        <header>
+            <h1>Logo</h1>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="about.html">About</a>
+                    </li>
+                    <li>
+                        <a href="service.html">Portfolio</a>
+                    </li>
+                    <li>
+                        <a href="news.html">News</a>
+                    </li>
+                    <a href="contact.html" class="btn">Contact us</a>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <section class="introduction">
+                <h5>Proved By prodesigner</h5>
+                <h1>Work that we produce for our clients</h1>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                    industry's standard.</p>
+                <button>Get more details</button>
+            </section>
+            <section class="trending">
+                <div class="text">
+                    <h2>Currently Trending Games</h2>
+                    <button>SEE ALL</button>
+                </div>
+                <div class="game-list">
+                    <p><img src="asset/81kEEhsOszL._AC_SL1500_.jpg" alt="game1"><br>40 Followers</p>
+                    <p><img src="asset/apps.808.14492077886571533.be42f4bd-887b-4430-8ed0-622341b4d2b0.jpg"
+                            alt="game2"><br>30 Followers</p>
+                    <p><img src="asset/mL4252_1024x1024.webp" alt="game3"><br>25 Followers</p>
+                    <p><img src="asset/pst1131_Zelda_Breath_of_the-_Wild_BOTW_Poster_large.webp" alt="game4"><br>50
+                        Followers</p>
+                </div>
+            </section>
+            <section class="text">
+                <h2>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h2>
+            </section>
+            <section class="text2">
+                <h2>Lorem Ipsum</h2>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                    industry's standard dummy text ever since the 1500s,</p>
+                <img src="asset/346190abf755e3883d1353fbc8d8ccb7e1acf076f1138d6b.avif" alt="game">
+            </section>
+            <section class="featured">
+                <h2>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</h2>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                    industry's standard dummy text ever since the 1500s,</p>
+            </section>
+            <section class="projects">
+                <div class="project-header">
+                    <h2>Our Recent Projects</h2>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+                </div>
+                <div class="project-pics">
+                    <img src="asset/download (3).jpg" alt="pic1">
+                    <img src="asset/images (1).jpg" alt="pic2">
+                    <img src="asset/images (2).jpg" alt="pic3">
+                    <img src="asset/images (3).jpg" alt="pic4">
+                    <img src="asset/images.jpg" alt="pic5">
+                    <img src="asset/download (2).jpg" alt="pic6">
+                </div>
+                <button>SEE ALL</button>
+            </section>
+            <section class="subscribe">
+                <h2>Lorem Ipsum</h2>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+
+                <div class="subscribe-box">
+                    <div class="subscribe-text">
+                        <h3>Stay in the loop</h3>
+                        <p>Subscribe to receive the latest news and updates about TDA.<br>
+                            We promise not to spam you!</p>
+                    </div>
+                    <form class="subscribe-form">
+                        <input type="email" placeholder="Enter email address" required>
+                        <button type="submit">Continue</button>
+                    </form>
+                </div>
+            </section>
+        </main>
+        <footer>
+            <div class="footer-container">
+                <div class="f-column">
+                    <h2>LOGO</h2>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+                </div>
+                <div class="f-column">
+                    <h4>About</h4>
+                    <ul>
+                        <li>Zeux</li>
+                        <li>Portfolio</li>
+                        <li>Careers</li>
+                        <li>Contact us</li>
+                    </ul>
+                </div>
+                <div class="f-column">
+                    <h4>Contact us</h4>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+                    <p>+908 89097 890</p>
+                </div>
+            </div>
+            <hr>
+            <div class="footer-bottom">
+                <p>Copyright ® 2022 prodesigner All rights Reserved</p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

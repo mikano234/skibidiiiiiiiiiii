@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News</title>
+</head>
+<style>
+    body {
+        background: linear-gradient(to bottom, #070320, #2b36b5);
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    header {
+        background-color: #070320;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 60px;
+        position: sticky;
+        top: 0;
+        z-index: 999;
+    }
+
+    header h1 {
+        color: white;
+    }
+
+    nav ul {
+        display: flex;
+        list-style: none;
+        gap: 40px;
+        align-items: center;
+    }
+
+    nav ul li a {
+        font-weight: bold;
+        transition: color 0.3s;
+        color: white;
+    }
+
+    nav ul li a:hover {
+        color: #E87D0E;
+    }
+
+    .btn {
+        background: #ff0000;
+        padding: 10px 20px;
+        border-radius: 50px;
+        font-weight: bold;
+        transition: background 0.3s;
+        color: white;
+    }
+
+    .btn:hover {
+        background: #ff3030;
+    }
+
+    main {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+    }
+
+    .search {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 100px 20px 60px 20px;
+    }
+
+    .search h1 {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 10px;
+        color: white;
+    }
+
+    .search p {
+        font-size: 1rem;
+        color: #ccc;
+        margin-bottom: 30px;
+    }
+
+    .search-box {
+        background-color: #e7d7cc;
+        display: flex;
+        align-items: center;
+        border-radius: 10px;
+        padding: 10px 15px;
+        width: 350px;
+    }
+
+    .search-box input {
+        border: none;
+        outline: none;
+        background: transparent;
+        flex: 1;
+        font-size: 1rem;
+        color: #333;
+    }
+
+    .search-box i {
+        color: #333;
+        margin-right: 10px;
+    }
+
+    .news {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        max-width: 1200px;
+        margin: auto;
+        color: white;
+    }
+
+    .left {
+        flex: 2;
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .main-post {
+        border-radius: 20px;
+        overflow: hidden;
+        padding: 20px;
+    }
+
+    .main-post img {
+        width: 100%;
+        border-radius: 15px;
+        margin-bottom: 15px;
+    }
+
+    .author-info {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 10px;
+    }
+
+    .author-info span {
+        font-size: 0.8rem;
+        color: #ccc;
+    }
+
+    .tag {
+        background-color: #2b0ef2;
+        padding: 15px;
+        font-size: 20px;
+    }
+
+    .main-post h2 {
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 10px;
+        color: white;
+    }
+
+    .main-post p {
+        color: #ccc;
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+
+    .right {
+        flex: 2;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .small-post {
+        display: flex;
+        border-radius: 15px;
+        padding: 10px;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .small-post img {
+        width: 80px;
+        height: 80px;
+        border-radius: 10px;
+        object-fit: cover;
+    }
+
+    .small-post .info {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .small-post .info .meta {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 5px;
+    }
+
+    .small-post .meta .tag {
+        padding: 2px 6px;
+        font-size: 0.7rem;
+    }
+
+    .small-post h3 {
+        font-size: 0.9rem;
+        font-weight: 500;
+        line-height: 1.3;
+    }
+
+
+    .subscribe {
+        width: 1000px;
+        margin: 80px auto;
+        padding: 20px;
+    }
+
+    .subscribe h2 {
+        color: white;
+        font-size: 22px;
+        margin-bottom: 10px;
+    }
+
+    .subscribe p {
+        color: #ccc;
+        line-height: 1.6;
+    }
+
+    .subscribe-box {
+        background: #d6c5bb;
+        color: #000;
+        border-radius: 10px;
+        padding: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 40px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .subscribe-text {
+        flex: 1;
+    }
+
+    .subscribe-text h3 {
+        margin: 0;
+        font-size: 20px;
+        color: #000;
+    }
+
+    .subscribe-text p {
+        color: #555;
+        font-size: 14px;
+    }
+
+    .subscribe-form {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .subscribe-form input {
+        padding: 12px 15px;
+        border: none;
+        outline: none;
+        background: #000;
+        color: #fff;
+        border-radius: 6px;
+        width: 220px;
+    }
+
+    .subscribe-form button {
+        padding: 12px 20px;
+        background: #e60023;
+        border: none;
+        color: #fff;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background 0.3s ease;
+    }
+
+    .subscribe-form button:hover {
+        background: #b8001b;
+    }
+
+    footer {
+        background-color: white;
+        padding: 40px 60px;
+    }
+
+    .footer-container {
+        display: flex;
+        justify-content: space-between;
+        max-width: 75%;
+    }
+
+    .f-column ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .footer-bottom {
+        text-align: center;
+        margin-top: 50px;
+    }
+</style>
+
+<body>
+    <script type="text/javascript">
+        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+        (function () {
+            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/68e78e40f54263195404127b/1j7487bl5';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
+    </script>
+    <div class="container">
+        <header>
+            <h1>Logo</h1>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="about.html">About</a>
+                    </li>
+                    <li>
+                        <a href="service.html">Portfolio</a>
+                    </li>
+                    <li>
+                        <a href="news.html">News</a>
+                    </li>
+                    <a href="contact.html" class="btn">Contact us</a>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <section class="search">
+                <h1>Lorem Ipsum is simply dummy text of the printing and.</h1>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search">
+                </div>
+            </section>
+            <section class="news">
+                <div class="left">
+                    <div class="main-post">
+                        <img src="asset/Screenshot 2025-10-18 145116.png" alt="">
+                        <div class="author-info">
+                            <span class="tag">John smash</span>
+                            <span>5min</span>
+                        </div>
+                        <h2>Lorem Ipsum is simply dummy text dummy text</h2>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+                            been the
+                            industry's standard dummy text ever since the 1500s...</p>
+                    </div>
+                    <div class="main-post">
+                        <img src="asset/Screenshot 2025-10-18 145127.png" alt="">
+                        <div class="author-info">
+                            <span class="tag">John smash</span>
+                            <span>5min</span>
+                        </div>
+                        <h2>Lorem Ipsum is simply dummy text dummy text</h2>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+                            been the
+                            industry's standard dummy text ever since the 1500s...</p>
+                    </div>
+                </div>
+
+                <div class="right">
+                    <div class="small-post">
+                        <img src="asset/iimages.jpg" alt="">
+                        <div class="info">
+                            <div class="meta">
+                                <span class="tag" style="background:#ff7337;">John smash</span>
+                                <span>5min</span>
+                            </div>
+                            <h3>Lorem Ipsum is simply dummy text dummy text ?</h3>
+                        </div>
+                    </div>
+
+                    <div class="small-post">
+                        <img src="asset/images (1).jpg" alt="">
+                        <div class="info">
+                            <div class="meta">
+                                <span class="tag" style="background:#2b0ef2;">John smash</span>
+                                <span>5min</span>
+                            </div>
+                            <h3>Lorem Ipsum is simply dummy text dummy text ?</h3>
+                        </div>
+                    </div>
+
+                    <div class="small-post">
+                        <img src="asset/images (2).jpg" alt="">
+                        <div class="info">
+                            <div class="meta">
+                                <span class="tag" style="background:#ff7337;">John smash</span>
+                                <span>3min</span>
+                            </div>
+                            <h3>Lorem Ipsum is simply dummy text dummy text ?</h3>
+                        </div>
+                    </div>
+
+                    <div class="small-post">
+                        <img src="asset/images (3).jpg" alt="">
+                        <div class="info">
+                            <div class="meta">
+                                <span class="tag" style="background:#2b0ef2;">John smash</span>
+                                <span>5min</span>
+                            </div>
+                            <h3>Lorem Ipsum is simply dummy text dummy text ?</h3>
+                        </div>
+                    </div>
+
+                    <div class="small-post">
+                        <img src="asset/images.jpg" alt="">
+                        <div class="info">
+                            <div class="meta">
+                                <span class="tag" style="background:#ff7337;">John smash</span>
+                                <span>5min</span>
+                            </div>
+                            <h3>Lorem Ipsum is simply dummy text dummy text ?</h3>
+                        </div>
+                    </div>
+
+                    <div class="small-post">
+                        <img src="asset/images (2).jpg" alt="">
+                        <div class="info">
+                            <div class="meta">
+                                <span class="tag" style="background:#2b0ef2;">John smash</span>
+                                <span>5min</span>
+                            </div>
+                            <h3>Lorem Ipsum is simply dummy text dummy text ?</h3>
+                        </div>
+                    </div>
+
+                    <div class="small-post">
+                        <img src="asset/images.jpg" alt="">
+                        <div class="info">
+                            <div class="meta">
+                                <span class="tag" style="background:#ff7337;">John smash</span>
+                                <span>3min</span>
+                            </div>
+                            <h3>Lorem Ipsum is simply dummy text dummy text ?</h3>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="subscribe">
+                <h2>Lorem Ipsum</h2>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+
+                <div class="subscribe-box">
+                    <div class="subscribe-text">
+                        <h3>Stay in the loop</h3>
+                        <p>Subscribe to receive the latest news and updates about TDA.<br>
+                            We promise not to spam you!</p>
+                    </div>
+                    <form class="subscribe-form">
+                        <input type="email" placeholder="Enter email address" required>
+                        <button type="submit">Continue</button>
+                    </form>
+                </div>
+            </section>
+        </main>
+        <footer>
+            <div class="footer-container">
+                <div class="f-column">
+                    <h2>LOGO</h2>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+                </div>
+                <div class="f-column">
+                    <h4>About</h4>
+                    <ul>
+                        <li>Zeux</li>
+                        <li>Portfolio</li>
+                        <li>Careers</li>
+                        <li>Contact us</li>
+                    </ul>
+                </div>
+                <div class="f-column">
+                    <h4>Contact us</h4>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+                    <p>+908 89097 890</p>
+                </div>
+            </div>
+            <hr>
+            <div class="footer-bottom">
+                <p>Copyright ® 2022 prodesigner All rights Reserved</p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>
